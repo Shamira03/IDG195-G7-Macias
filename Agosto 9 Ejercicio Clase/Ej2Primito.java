@@ -17,14 +17,24 @@ public class Ej2Primito {
     public static void main(String[] args) {
         // TODO code application logic here
         int arreglito []= {4, 5, 6, 9, 7};
+        for (int i = 0; i < arreglito.length; i++) {
+            if(EsPrimo(arreglito[i])){
+                System.out.println(arreglito[i]+ " es primo");
+            }
+            else{
+                System.out.println(arreglito [i]+ " no es primo");
+            }
+        }
     }
     
-    public static boolean EsPrimo (int [] numer){
-        for(int i = 2; i<numer.length; i++){
-            if(numer.length%i == 0){
+     public static boolean EsPrimo (int numer){
+        
+        for(int i = 2; i<numer; i++){
+            if(numer%i == 0){
                 return false;
             }
-        }return true;
-    }
+        }
+        return true;
+    } 
     
 }
