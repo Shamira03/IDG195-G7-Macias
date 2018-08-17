@@ -1,0 +1,30 @@
+{
+	"alumno":[
+		{
+			"nombre":"Shamira",
+			"apellido":"Macias",
+			"matricula":"020888",
+			"carrera":"IDGD",
+			"semestre": 7,
+			"pasword":"easy"
+		},
+		{
+			"nombre":"Shamira",
+			"apellido":"Macias",
+			"matricula":"020888",
+			"carrera":"IDGD",
+			"semestre": 7,
+			"pasword":"easy"
+		},
+		{
+			"nombre":"Shamira",
+			"apellido":"Macias",
+			"matricula":"020888",
+			"carrera":"IDGD",
+			"semestre": 7,
+			"pasword":"easy"
+		},
+	]
+}
+
+	
