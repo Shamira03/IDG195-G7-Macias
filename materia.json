@@ -1,0 +1,40 @@
+{
+	"materia":[
+		{
+			"Id":"IDG110", 
+			"nombre":"base de datos",
+			"profesor":"Del Rincon de la Macorra Gerardo",
+			"diasDeClase":"miercoles, viernes", 
+			"horaInicio":"16:00",
+			"horaSalida":"18:00",
+			"numeroSalon":"7101, 4304",
+			"faltasP1":0,
+			"faltasP2":0,
+			"faltasP3":0,
+			"faltasFinal":0,
+			"calificacionP1":95,
+			"calificacionP2":94,
+			"calificacionP3":96,
+			"calificacionFinal":97	
+		}, 
+
+		{
+			"Id":"IDG195", 
+			"nombre":"desarrollo de aplicaciones moviles",
+			"profesor":"Arambula Garcia Angel Miguel",
+			"diasDeClase":"martes, jueves", 
+			"horaInicio":"18:00",
+			"horaSalida":"20:00",
+			"numeroSalon":"2307, 4304",
+			"faltasP1":0,
+			"faltasP2":0,
+			"faltasP3":0,
+			"faltasFinal":0,
+			"calificacionP1":97,
+			"calificacionP2":95,
+			"calificacionP3":99,
+			"calificacionFinal":98
+		} 
+		
+	]
+}
