@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="txtNombre" type="id">String</item>
+    <item name="txtTelefono" type="id">String</item>
+    <item name="txtDireccion" type="id">String</item>
+    <item name="button" type="id">Button</item>
+</resources>
