@@ -27,51 +27,39 @@ import org.json.JSONStringer;
 import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
-    EditText Nombre;
-    EditText Telefono;
-    EditText Direccion;
-    Button getButton;
+    private EditText Nombre;
+    private EditText Direccion;
+    private EditText Telefono;
+    private Button getButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Nombre = (EditText) findViewById(R.id.txtNombre);
+        Telefono= (EditText) findViewById(R.id.txtTelefono);
+        Direccion = (EditText) findViewById(R.id.txtDireccion);
+        getButton = (Button) findViewById(R.id.button);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Nombre = (EditText) findViewById(R.id.Nombre);
-        Telefono = (EditText) findViewById(R.id.Telefono);
-        Direccion = (EditText) findViewById(R.id.Direccion);
-        getButton = (Button) findViewById(R.id.button);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 volleyRequest();
-                ClassConection conection = new ClassConection();
 
-                try {
-                    String response = conection.execute("http://138.68.231.116:5000/empresa").get();
-
-                    JSONObject jsonObject = new JSONObject(response);
-                    String Nombre = jsonObject.getString("Nombre");
-                    String Telefono = jsonObject.getString("Telefono");
-                    String Direccion = jsonObject.getString("Direccion");
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
                 Snackbar.make(view, "Hi, hi", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
+
     }
     public void volleyRequest(){
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://138.68.231.116:5000/dashboard/";
+        String url ="http://138.68.231.116:5000/empresas";
 
 // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
