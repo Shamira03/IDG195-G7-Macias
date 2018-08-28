@@ -30,7 +30,7 @@ public class Mytest extends AppCompatActivity {
         Nombre = (EditText) findViewById(R.id.txtNombre);
         Telefono= (EditText) findViewById(R.id.txtTelefono);
         Direccion = (EditText) findViewById(R.id.txtDireccion);
-        getButton = (Button) findViewById(R.id.button);
+        getButton = (Button) findViewById(R.id.Button);
 
          getButton.setOnClickListener(new View.OnClickListener() {
          @Override
@@ -38,10 +38,10 @@ public class Mytest extends AppCompatActivity {
           ClassConnection connection = new ClassConnection();
 
                  try {
-                    String response = connection.execute("http://api.myjson.com/bins/i15p8").get();
+                    String response = connection.execute("http://138.68.231.116:5000/empresa").get();
 
                   JSONArray jsonArray = new JSONArray(response);
-                  JSONObject jsonObject = jsonArray.getJSONObject(0);
+                  JSONObject jsonObject = jsonArray.getJSONObject(1);
 
                      String firstName = jsonObject.getString("Nombre");
                      String Telephone = jsonObject.getString("Telefono");
