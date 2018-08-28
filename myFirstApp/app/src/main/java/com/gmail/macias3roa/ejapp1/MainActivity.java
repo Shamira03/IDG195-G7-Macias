@@ -8,6 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -17,8 +19,18 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-public class MainActivity extends AppCompatActivity {
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONStringer;
 
+import java.util.concurrent.ExecutionException;
+
+public class MainActivity extends AppCompatActivity {
+    EditText Nombre;
+    EditText Telefono;
+    EditText Direccion;
+    Button getButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,11 +38,32 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Nombre = (EditText) findViewById(R.id.Nombre);
+        Telefono = (EditText) findViewById(R.id.Telefono);
+        Direccion = (EditText) findViewById(R.id.Direccion);
+        getButton = (Button) findViewById(R.id.button);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 volleyRequest();
+                ClassConection conection = new ClassConection();
+
+                try {
+                    String response = conection.execute("http://138.68.231.116:5000/empresa").get();
+
+                    JSONObject jsonObject = new JSONObject(response);
+                    String Nombre = jsonObject.getString("Nombre");
+                    String Telefono = jsonObject.getString("Telefono");
+                    String Direccion = jsonObject.getString("Direccion");
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 Snackbar.make(view, "Hi, hi", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -38,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void volleyRequest(){
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://api.myjson.com/bins/i15p8";
+        String url ="http://138.68.231.116:5000/dashboard/";
 
 // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
