@@ -16,6 +16,8 @@ public class ClassPerfil {
     private String apellido;
     @SerializedName("Carrera")
     private String carrera;
+    @SerializedName("Semestre")
+    private Integer semestre;
 
     public String getId() {
         return id;
@@ -57,6 +59,14 @@ public class ClassPerfil {
         this.apellido = apellido;
     }
 
+    public Integer getSemestre() {
+        return semestre;
+    }
+
+    public void setSemestre(Integer semestre) {
+        this.semestre = semestre;
+    }
+
     public String getCarrera() {
         return carrera;
     }
@@ -74,6 +84,7 @@ public class ClassPerfil {
         sb.append(", nombre='").append(nombre).append('\'');
         sb.append(", apellido='").append(apellido).append('\'');
         sb.append(", carrera='").append(carrera).append('\'');
+        sb.append(", semestre='").append(semestre).append('\'');
         sb.append('}');
         return sb.toString();
     }
