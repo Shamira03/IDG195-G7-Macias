@@ -18,7 +18,36 @@ public class ClassPerfil {
     private String carrera;
     @SerializedName("Semestre")
     private Integer semestre;
+    @SerializedName("materiasaprobadas")
+    private Integer materiasaprobadas;
+    @SerializedName ("Padre")
+    private Tutor padre;
+    @SerializedName("Madre")
+    private Tutor madre;
 
+
+    public Integer getMateriasaprobadas() {
+        return materiasaprobadas;
+    }
+
+    public void setMateriasaprobadas(Integer materiasaprobadas) {
+        this.materiasaprobadas = materiasaprobadas;
+    }
+    public Tutor getPadre() {
+        return padre;
+    }
+
+    public void setPadre(Tutor padre) {
+        this.padre = padre;
+    }
+
+    public Tutor getMadre() {
+        return madre;
+    }
+
+    public void setMadre(Tutor madre) {
+        this.madre = madre;
+    }
     public String getId() {
         return id;
     }
@@ -85,6 +114,9 @@ public class ClassPerfil {
         sb.append(", apellido='").append(apellido).append('\'');
         sb.append(", carrera='").append(carrera).append('\'');
         sb.append(", semestre='").append(semestre).append('\'');
+        sb.append(", padre='").append(padre);
+        sb.append(", madre='").append(madre);
+        sb.append(", materiasaprobadas='").append(materiasaprobadas).append('\'');
         sb.append('}');
         return sb.toString();
     }
