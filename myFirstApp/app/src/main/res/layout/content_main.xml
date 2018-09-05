@@ -12,26 +12,21 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nombre"/>
+        android:text="Matricula"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txtnombre"/>
+        android:id="@+id/txtmatricula"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Telefono"/>
+        android:text="Contraseña"/>
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Direccion"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:id="@+id/txtpassword"/>
     <Button
+        android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Iniciar sesión"/>

@@ -4,11 +4,12 @@ import com.google.gson.annotations.SerializedName;
 
 public class ClassPerfil {
 
+
     @SerializedName("id")
     private String id;
-    @SerializedName("username")
+    @SerializedName("matricula")
     private String username;
-    @SerializedName("password")
+    @SerializedName("contrasena")
     private String password;
     @SerializedName("Nombre")
     private String nombre;
@@ -56,11 +57,11 @@ public class ClassPerfil {
         this.id = id;
     }
 
-    public String getUsername() {
+    public String getMatricula() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setMatricula(String username) {
         this.username = username;
     }
 
@@ -120,6 +121,5 @@ public class ClassPerfil {
         sb.append('}');
         return sb.toString();
     }
-
 
 }

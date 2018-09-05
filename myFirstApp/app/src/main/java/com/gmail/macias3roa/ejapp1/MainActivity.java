@@ -36,13 +36,15 @@ import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
      private Gson gson;
-     EditText Nombre;
+     EditText Matricula;
+     EditText Password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Nombre = (EditText) findViewById(R.id.txtNombre);
+        Matricula = (EditText) findViewById(R.id.txtmatricula);
+        Password = (EditText) findViewById(R.id.txtpassword);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -99,18 +101,21 @@ public class MainActivity extends AppCompatActivity {
         String url ="http://138.68.231.116:5000/perfil";
 
 // Request a string response from the provided URL.
-        StringRequest stringRequest = new StringRequest (Request.Method.GET, url,
+        final String matricula = Matricula.getText().toString();
+        final String password = Password.getText().toString();
+        final StringRequest stringRequest = new StringRequest (Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        List<ClassPerfil> miPerfil = Arrays.asList(gson.fromJson(response, ClassPerfil[].class));
-                        for (ClassPerfil perfil: miPerfil) {
-                            if (perfil.getUsername().trim().toLowerCase().equals("t021204")){
+                        List<ClassPerfil> perfiles = Arrays.asList(gson.fromJson(response, ClassPerfil[].class));
+
+                        ClassPerfil misPerfiles = findPerfil(perfiles,matricula,password)
+
+                            if (misPerfiles != null){
                                 Toast.makeText(getApplicationContext(),
-                                        perfil.toString(),
+                                        misPerfiles.toString(),
                                         Toast.LENGTH_LONG).show();
                             }
-                        }
 
                         }
                     }, new Response.ErrorListener() {
@@ -129,7 +134,14 @@ public class MainActivity extends AppCompatActivity {
         queue.add(stringRequest);
     }
 
-
+    private ClassPerfil findPerfil (List<ClassPerfil> perfiles, String matricula, String password){
+        for(ClassPerfil perfil: perfiles){
+           if(perfil.getUsername().equals(matricula)&& perfil.getPassword().equals(password)){
+               return perfil;
+           }
+        }
+        return null;
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
