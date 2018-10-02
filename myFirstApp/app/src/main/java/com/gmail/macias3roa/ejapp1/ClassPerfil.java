@@ -122,4 +122,7 @@ public class ClassPerfil {
         return sb.toString();
     }
 
+    public String getUsername() {
+        return username;
+    }
 }
