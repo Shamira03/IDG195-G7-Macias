@@ -1,23 +1,89 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet,
+         Text, 
+         View, 
+         Image, 
+         Button, 
+         TextInput, 
+         AsyncStorage, 
+         KeyboardAvoidingView} 
+         from 'react-native';
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      usuario: '',
+      password: '',
+    };
+  }
+  
+
+  _getAlumnosFromApiAsync = () => {
+    return fetch('http://138.68.231.116:5000/alumnos')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        var usuario = this.state.usuario
+        var password = this.state.password
+        var test = responseJson.find(function (obj) { return obj.matricula === usuario && obj.password === password});
+        return test;
+      })
+      .then((object) => {
+        if (object === undefined) {
+          alert('Favor de revisar usuario o contraseña')
+        } else {
+          alert(object.matricula + ' ' + object.nombre)
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
   render() {
     return (
       <View style={styles.container}>
-       <Text>Padre</Text>
-
-
+       <Image style={styles.img} source={require('./src/imgs/flama.png')}/>
+        <TextInput placeholder="Usuario" 
+        style={styles.text} onChangeText={(usuario) => this.setState({usuario})} />
+        <TextInput placeholder="Contraseña" secureTextEntry={true}
+        style={styles.text} onChangeText={(password) => this.setState({password})}/>
+        <View style={styles.button}>
+        <Button  
+        title="Ingresar"  
+        color="#FFFFFF" 
+        onPress={(this.login)} 
+        accessibilityLabel="Tap on Me" />
+        </View>>
       </View>
     );
   }
 }
-z
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'right',
-    justifyContent: 'right',
+    backgroundColor: '#fdcc01',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
+  text: {
+    fontSize: 20, 
+    padding: 10
+    
+  },
+  img: {
+    width: '30%',
+    height: '30%',
+    marginBottom: 50,
+    justifyContent: 'center',
+  },
+  button: {
+    backgroundColor: 'black',
+    borderRadius:10,
+
+
+  }
+  
+    
 });
